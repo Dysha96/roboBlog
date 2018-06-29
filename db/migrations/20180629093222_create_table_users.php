@@ -37,7 +37,6 @@ class CreateTableUsers extends AbstractMigration
         $articles->addColumn('name', 'string', array('limit' => 150))
             ->addColumn('password', 'text')
             ->addColumn('role', 'text', array('null' => true))
-            ->addColumn('remember_token', 'string', array('null' => true))
             ->addColumn('date', 'timestamp', array('default' => 'CURRENT_TIMESTAMP'))
             ->addIndex(array('name'), array('unique' => true))->create();
     }

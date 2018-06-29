@@ -27,33 +27,68 @@ class ArticlesSeeder extends AbstractSeed
                   диагонали. Чтобы сделать свой текст таковым, используйте подзаголовки перед каждым смысловым блоком,
                    маркированные или нумерованные списки, выделяйте жирным или курсивом моменты, которые кажутся вам 
                    важными, но не переусердствуйте с подобным форматированием».',
-                'image' => null,
-                'views' => 10
+                'image' => 'robot-1132x670.jpg',
+                'views' => 15
             ),
             array(
                 'user_id' => '1',
                 'title' => 'ТОП 2',
                 'content' => 'В качестве примера работы копирайтера',
                 'image' => null,
-                'views' => 9
+                'views' => 14
             ),
             array(
                 'user_id' => '1',
                 'title' => 'ТОП 3',
                 'content' => 'В качестве примера работы копирайтера',
                 'image' => null,
-                'views' => 8
+                'views' => 13
             ),
             array(
                 'user_id' => '1',
                 'title' => 'ТОП 4',
                 'content' => 'В качестве примера работы копирайтера',
                 'image' => null,
-                'views' => 7
+                'views' => 12
             ),
             array(
                 'user_id' => '1',
                 'title' => 'ТОП 5',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 11
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'ТОП 6',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 10
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'ТОП 7',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 9
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'ТОП 8',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 8
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'ТОП 9',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 7
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'ТОП 10',
                 'content' => 'В качестве примера работы копирайтера',
                 'image' => null,
                 'views' => 6
@@ -64,6 +99,13 @@ class ArticlesSeeder extends AbstractSeed
                 'content' => 'В качестве примера работы копирайтера',
                 'image' => null,
                 'views' => 5
+            ),
+            array(
+                'user_id' => '1',
+                'title' => 'не ТОП',
+                'content' => 'В качестве примера работы копирайтера',
+                'image' => null,
+                'views' => 4
             ),
         );
 

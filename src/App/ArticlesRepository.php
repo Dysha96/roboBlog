@@ -13,7 +13,7 @@ class ArticlesRepository
 
     public function all()
     {
-        return $this->pdo->query('SELECT * FROM users')->fetchAll();
+        return $this->pdo->query('SELECT * FROM articles')->fetchAll();
     }
 
     public function articleById($id)

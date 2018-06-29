@@ -1,0 +1,7 @@
+{
+    "name": "user/robo-blog",
+    "minimum-stability": "dev",
+    "require": {
+        "robmorgan/phinx": "dev-master"
+    }
+}

@@ -24,7 +24,7 @@ class ArticlesRepository
     public function articleTop()
     {
         return $this->pdo->query
-        ("SELECT if, title FROM articles ORDER BY views DESC WHERE date>= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)limit 10")
+        ("SELECT id, title FROM articles WHERE date >= DATE_SUB(CURRENT_DATE, INTERVAL 7 DAY)  ORDER BY views DESC  limit 10")
             ->fetchAll();
     }
 

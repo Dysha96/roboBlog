@@ -28,21 +28,22 @@ class ArticlesRepository
             ->fetchAll();
     }
 
-    public function addArticle($title, $content, $image = null, $userId = 1)
+    public function addViewById($id)
     {
-        if ($image != null) {
-            $insert = $this->pdo->prepare
-            ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
-            $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
-        } else {
-            $insert = $this->pdo->prepare
-            ("INSERT INTO `articles` SET  `user_id` = :userId, `title` = :title,`content` = :content");
-            $result = $insert->execute(['userId' => $userId, 'title' => $title, 'content' => $content]);
-        }
+        $insert = $this->pdo->prepare("UPDATE  `articles` SET `views` = `views` + 1 WHERE `id` = :id");
+        $result = $insert->execute(['id' => $id]);
         return $result;
     }
 
-    public function updateArticle($id, $userId, $title, $content, $image = null)
+    public function addArticle($title, $content, $userId = 1, $image = NULL)
+    {
+            $insert = $this->pdo->prepare
+            ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
+            $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
+        return $result;
+    }
+
+    public function updateArticle($id, $userId, $title, $content, $image = NULL)
     {
         if ($image != null) {
             $insert = $this->pdo->prepare

@@ -28,26 +28,32 @@ class ArticlesRepository
             ->fetchAll();
     }
 
-    public function addArticle($userId, $title, $content, $image = null)
-    {
-        $insert = $this->connection->prepare
-        ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
-
-        $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
-
-        return $result;
-    }
-
-    public function updateArticle($userId, $title, $content, $image = null)
+    public function addArticle($title, $content, $image = null, $userId = 1)
     {
         if ($image != null) {
-            $insert = $this->connection->prepare
+            $insert = $this->pdo->prepare
             ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
             $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
         } else {
-            $insert = $this->connection->prepare
+            $insert = $this->pdo->prepare
             ("INSERT INTO `articles` SET  `user_id` = :userId, `title` = :title,`content` = :content");
             $result = $insert->execute(['userId' => $userId, 'title' => $title, 'content' => $content]);
+        }
+        return $result;
+    }
+
+    public function updateArticle($id, $userId, $title, $content, $image = null)
+    {
+        if ($image != null) {
+            $insert = $this->pdo->prepare
+            ("UPDATE  `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content 
+WHERE `id` = :id");
+            $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title,
+                'content' => $content, 'id' => $id]);
+        } else {
+            $insert = $this->pdo->prepare
+            ("UPDATE  `articles` SET  `user_id` = :userId, `title` = :title,`content` = :content WHERE `id` = :id");
+            $result = $insert->execute(['userId' => $userId, 'title' => $title, 'content' => $content, 'id' => $id]);
         }
         return $result;
     }

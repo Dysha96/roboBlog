@@ -24,12 +24,17 @@ class UserRepository
 
     public function userByLogin($login)
     {
-        return $this->pdo->query("SELECT * FROM users WHERE name = $login")->fetch();
+        $insert = $this->pdo->prepare
+        ("SELECT * FROM users WHERE `name` = :login");
+
+        $result = $insert->execute(['login' => $login]);
+
+        return $result;
     }
 
     public function userRoleByLogin($login)
     {
-        return $this->pdo->query("SELECT role FROM users WHERE name = $login")->fetch();
+        return $this->pdo->query("SELECT role FROM users WHERE `name` = $login")->fetch();
     }
 
     public function addUser($name, $password, $role = null)

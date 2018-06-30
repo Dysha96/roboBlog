@@ -24,12 +24,7 @@ class UserRepository
 
     public function userByLogin($login)
     {
-        $insert = $this->pdo->prepare
-        ("SELECT * FROM users WHERE `name` = :login");
-
-        $result = $insert->execute(['login' => $login]);
-
-        return $result;
+        return $this->pdo->query("SELECT * FROM users WHERE `name` = '$login'")->fetch();
     }
 
     public function userRoleByLogin($login)

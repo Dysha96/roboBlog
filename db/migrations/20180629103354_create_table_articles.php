@@ -36,7 +36,7 @@ class CreateTableArticles extends AbstractMigration
             $articles = $this->table('Articles');
 
             $articles->addColumn('user_id', 'integer')
-                ->addForeignKey('user_id','Users','id')
+                ->addForeignKey('user_id', 'Users', 'id')
                 ->addColumn('title', 'text')
                 ->addColumn('content', 'text')
                 ->addColumn('image', 'string', array('null' => true))

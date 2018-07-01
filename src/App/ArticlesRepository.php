@@ -37,24 +37,22 @@ class ArticlesRepository
 
     public function addArticle($title, $content, $userId = 1, $image = NULL)
     {
-            $insert = $this->pdo->prepare
-            ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
-            $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
+        $insert = $this->pdo->prepare
+        ("INSERT INTO `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
+        $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
         return $result;
     }
 
-    public function updateArticle($id, $userId, $title, $content, $image = NULL)
+    public function updateArticle($id, $title, $content, $image = NULL)
     {
         if ($image != null) {
             $insert = $this->pdo->prepare
-            ("UPDATE  `articles` SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content 
-WHERE `id` = :id");
-            $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title,
-                'content' => $content, 'id' => $id]);
+            ("UPDATE  `articles` SET `image` = :image, `title` = :title,`content` = :content WHERE `id` = :id");
+            $result = $insert->execute(['image' => $image, 'title' => $title, 'content' => $content, 'id' => $id]);
         } else {
             $insert = $this->pdo->prepare
-            ("UPDATE  `articles` SET  `user_id` = :userId, `title` = :title,`content` = :content WHERE `id` = :id");
-            $result = $insert->execute(['userId' => $userId, 'title' => $title, 'content' => $content, 'id' => $id]);
+            ("UPDATE  `articles` SET  `title` = :title,`content` = :content WHERE `id` = :id");
+            $result = $insert->execute(['title' => $title, 'content' => $content, 'id' => $id]);
         }
         return $result;
     }

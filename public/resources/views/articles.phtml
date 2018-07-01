@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link href='/resources/views/style.css' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function () {
+            nicEditors.allTextAreas()
+        });
+        //]]>
+    </script>
+    <meta charset="utf-8"/>
+    <title>BLOG</title>
+
+</head>
+
+<body>
+<ul id="navbar">
+    <li><a href="/">Главная</a></li>
+
+    <?php if ($_SESSION['user']['role'] == 'admin') : ?>
+        <li><a href="/">Добавить</a></li>
+    <? endif; ?>
+
+    <?php if ($_SESSION['user']) : ?>
+        <li><a href="/session/destroy">Выход</a></li>
+    <? else : ?>
+        <li><a href="/session/new">Вход</a></li>
+    <? endif; ?>
+</ul>
+
+<?php if (isset($_POST['submit'])): ?>
+    <form enctype="multipart/form-data" action="/articles/edit/<?= $article['id'] ?>" method="post">
+        <div>
+            <b>Title</b>
+            <input type="text" required name="title" value="<?= $article['title'] ?>">
+            <?php if (isset($errors['title'])) : ?>
+                <div style="color: red"><?= $errors['title'] ?></div>
+            <?php endif ?>
+            <br>
+            <p style="text-align:center">
+                <b>Content</b>
+            </p>
+            <?php if (isset($errors['content'])) : ?>
+                <div style="color: red"><?= $errors['content'] ?></div>
+            <?php endif ?>
+        </div>
+        <br>
+        <textarea required name="content" style="width: 100%; ">
+    <?= $article['content'] ?>
+    </textarea>
+        <br/>
+        <div>
+            Pictures<br><br>
+            <input class="file" type="file" name="image"><br>
+        </div>
+        <br>
+        <div>
+            <input type="submit" name="submit" class="submit" value="Редактировать">
+        </div>
+    </form>
+    <style>
+        .display {
+            display: none;
+        }
+    </style>
+<?php endif; ?>
+
+<div class="display">
+    <div class="wrapper-article">
+        <div class="article">
+            <h2>
+                <p><?= $article['title'] ?></a></p>
+            </h2>
+            <?php if (!empty($article['image'])) : ?>
+                <div class="image">
+                    <img src="../resources/<?= $article['image']; ?>">
+                </div>
+            <? endif ?>
+
+            <div>
+                <p><?= $article['content'] ?></p>
+            </div>
+
+
+        </div>
+        <?php if (($_SESSION['user']) || isset($_POST['submit'])) : ?>
+            <form method="post">
+                <input type="submit" name="submit" class="submit" value="Редактировать">
+            </form>
+        <? endif; ?>
+    </div>
+
+</div>
+</body>
+</html>

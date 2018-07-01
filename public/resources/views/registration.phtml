@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href='/resources/views/style.css' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<ul id="navbar">
+    <li><a href="/">Главная</a></li>
+    <?php if ($_SESSION['user']) : ?>
+        <li><a href="/session/destroy">Выход</a></li>
+    <? else : ?>
+        <li><a href="/session/new">Вход</a></li>
+    <? endif; ?>
+</ul>
+
+<form action="/session" method="post">
+    <div>
+        <b>Nickname</b>
+        <input type="text" required name="name">
+        <b>Password</b>
+        <input type="password" required name="password">
+        <?php if ($errors) : ?>
+            <div style="color: red"><?= $errors ?></div>
+        <?php endif ?>
+    </div>
+    <br>
+
+    <div>
+        <input type="submit">
+    </div>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href='/resources/views/style.css' rel='stylesheet' type='text/css'>
+    <meta charset="utf-8"/>
+    <title>BLOG</title>
+    <script type="text/javascript" src="http://js.nicedit.com/nicEdit-latest.js"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        bkLib.onDomLoaded(function () {
+            nicEditors.allTextAreas()
+        });
+        //]]>
+    </script>
+</head>
+<body>
+<ul id="navbar">
+    <li><a href="/">Главная</a></li>
+    <?php if ($_SESSION['user']) : ?>
+        <li><a href="/session/destroy">Выход</a></li>
+    <? else : ?>
+        <li><a href="/session/new">Вход</a></li>
+    <? endif; ?>
+</ul>
+<h1>New articles</h1>
+
+<div>
+    <a href="/">articles list</a>
+</div>
+
+<br>
+
+<form enctype="multipart/form-data" action="/new" method="post">
+    <div>
+        <b>Title</b>
+        <input type="text" name="title" value="<?= $article['title'] ?>">
+        <?php if (isset($errors['title'])) : ?>
+            <div style="color: red"><?= $errors['title'] ?></div>
+        <?php endif ?>
+        <br>
+        <p style="text-align:center">
+            <b>Content</b>
+        </p>
+        <!--        <input type="text" name="content" value="--><? //= $article['content'] ?><!--">-->
+        <?php if (isset($errors['content'])) : ?>
+            <div style="color: red"><?= $errors['content'] ?></div>
+        <?php endif ?>
+    </div>
+
+    <br>
+    <textarea name="content" style="width: 100%; ">
+    <?= $article['content'] ?>
+    </textarea>
+    <br/>
+
+    <div>
+        Pictures<br><br>
+        <input class="file" type="file" name="image"><br>
+    </div>
+    <br>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+
+</body>
+</html>

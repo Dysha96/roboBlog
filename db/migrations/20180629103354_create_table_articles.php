@@ -42,7 +42,7 @@ class CreateTableArticles extends AbstractMigration
                 ->addColumn('image', 'string', array('null' => true))
                 ->addColumn('views', 'integer', array('null' => true))
                 ->addColumn('date', 'timestamp', array('default' => 'CURRENT_TIMESTAMP'))
-                ->addIndex(array('image'), array('unique' => true))->create();
+                ->create();
         }
     }
 }

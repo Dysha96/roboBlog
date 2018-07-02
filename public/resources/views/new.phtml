@@ -18,9 +18,9 @@
     <li><a href="/">Главная</a></li>
     <?php if ($_SESSION['user']) : ?>
         <li><a href="/session/destroy">Выход</a></li>
-    <? else : ?>
+    <?php else : ?>
         <li><a href="/session/new">Вход</a></li>
-    <? endif; ?>
+    <?php endif; ?>
 </ul>
 <h1>New articles</h1>
 

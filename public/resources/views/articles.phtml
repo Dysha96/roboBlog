@@ -21,13 +21,13 @@
 
     <?php if ($_SESSION['user']['role'] == 'admin') : ?>
         <li><a href="/">Добавить</a></li>
-    <? endif; ?>
+    <?php endif; ?>
 
     <?php if ($_SESSION['user']) : ?>
         <li><a href="/session/destroy">Выход</a></li>
-    <? else : ?>
+    <?php else : ?>
         <li><a href="/session/new">Вход</a></li>
-    <? endif; ?>
+    <?php endif; ?>
 </ul>
 
 <?php if (isset($_POST['submit'])): ?>
@@ -77,7 +77,7 @@
                 <div class="image">
                     <img src="../resources/<?= $article['image']; ?>">
                 </div>
-            <? endif ?>
+            <?php endif ?>
 
             <div>
                 <p><?= $article['content'] ?></p>
@@ -89,7 +89,7 @@
             <form method="post">
                 <input type="submit" name="submit" class="submit" value="Редактировать">
             </form>
-        <? endif; ?>
+        <?php endif; ?>
     </div>
 
 </div>

@@ -11,14 +11,17 @@
 + MySQL
 
 ---
-1. Для того что бы скачать проект выполните команду находясь в папку в которую хотите скачать проект
+1. Для того что бы скачать проект выполните команду, находясь в папке в которую хотите скачать проект
     + git clone https://github.com/Dysha96/roboBlog.git
 3. Выполните установку пакетов
     + composer install
-3. для точго что бы выполнить миграции и сидирование выполните команды по порядку
+4. Заполните данные подключения к бд
+    + для выполнения миграций в файле phinx.yml
+    + для работы приложения в файле public/.env по подобию public/setting.env
+5. для точго что бы выполнить миграции и сидирование выполните команды по порядку
     + php vendor/robmorgan/phinx/bin/phinx init инициализация настроек
     + php vendor/robmorgan/phinx/bin/phinx migrate
     + php vendor/robmorgan/phinx/bin/phinx seed:run -s UsersSeeder
     + php vendor/robmorgan/phinx/bin/phinx seed:run -s ArticlesSeeder
-4. что бы запустить проект перейдите в папку /public и выполните
+5. что бы запустить проект перейдите в папку /public и выполните
     + php -S localhost:8080 после чего проект будет доступен по даному адрессу

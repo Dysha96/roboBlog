@@ -3,22 +3,26 @@
 namespace App;
 
 use function App\Template\render;
+use Dotenv;
 
+require_once __DIR__ . '/../vendor/autoload.php';
 require_once '../src/App/UserRepository.php';
 require_once '../src/App/Application.php';
 require_once '../src/App/Template/Template.php';
 require_once '../src/App/ArticlesRepository.php';
-
+$dotenv = new Dotenv\Dotenv(__DIR__);
+$dotenv->load();
+$dotenv->required(array('DB_HOST', 'DB_DATABASE', 'DB_USERNAME', 'DB_PASSWORD'));
 
 $opt = array(
     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
     \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
 );
 
-$config = ['host' => 'localhost',
-    'db_name' => 'robo_blog',
-    'username' => 'root',
-    'password' => '',
+$config = ['host' => getenv('DB_HOST'),
+    'db_name' => getenv('DB_DATABASE'),
+    'username' => getenv('DB_USERNAME'),
+    'password' => getenv('DB_PASSWORD'),
     'charset' => 'utf8'];
 $dsn = "mysql:host={$config['host']};dbname={$config['db_name']};charset={$config['charset']}";
 $pdo = new \PDO($dsn, $config['username'], $config['password'], $opt);

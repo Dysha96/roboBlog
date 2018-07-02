@@ -2,6 +2,7 @@
     "name": "user/robo-blog",
     "minimum-stability": "dev",
     "require": {
-        "robmorgan/phinx": "dev-master"
+        "robmorgan/phinx": "dev-master",
+        "vlucas/phpdotenv": "^2.5@dev"
     }
 }

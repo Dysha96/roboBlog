@@ -13,23 +13,23 @@ class UserRepository
 
     public function deleteById($id)
     {
-        $stmt = $this->pdo->prepare('delete from users where id = ?');
+        $stmt = $this->pdo->prepare('delete from Users where id = ?');
         return $stmt->execute([$id]);
     }
 
     public function all()
     {
-        return $this->pdo->query('SELECT * FROM users')->fetchAll();
+        return $this->pdo->query('SELECT * FROM Users')->fetchAll();
     }
 
     public function userByLogin($login)
     {
-        return $this->pdo->query("SELECT * FROM users WHERE `name` = '$login'")->fetch();
+        return $this->pdo->query("SELECT * FROM Users WHERE `name` = '$login'")->fetch();
     }
 
     public function userRoleByLogin($login)
     {
-        return $this->pdo->query("SELECT role FROM users WHERE `name` = $login")->fetch();
+        return $this->pdo->query("SELECT role FROM Users WHERE `name` = $login")->fetch();
     }
 
     public function addUser($name, $password, $role = null)

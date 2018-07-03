@@ -20,3 +20,9 @@
     + php vendor/robmorgan/phinx/bin/phinx seed:run -s ArticlesSeeder
 6. что бы запустить проект перейдите в папку /public и выполните
     + php -S localhost:8080 после чего проект будет доступен по даному адрессу
+---
+Для тестирования доступны следующие пользователи 
++ admin1 password Роль admin
++ admin2 password Роль admin
++ user1 qwerty Роль user
++ user2 qwerty Роли нет

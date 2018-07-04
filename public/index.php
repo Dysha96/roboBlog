@@ -73,7 +73,7 @@ $app->post('/articles/edit/:id', function ($params, $arguments) use ($repository
         $uploaddir = 'resources/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         $repositoryArticles->
-        updateArticle($_SESSION['user']['id'], $params['title'], $params['content'], $_FILES['image']['name']);
+        updateArticle($_SESSION['user']['id'], $params['title'], strip_tags($params['content']), $_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
         return header('Location: /');
     } else {
@@ -86,7 +86,7 @@ $app->get('/new', function ($params, $arguments) use ($newArticle) {
     if (empty($_SESSION['user'])) {
         return header('Location: /');
     }
-    return render('new', ['errors' => [], 'article' => $newArticle]);
+    return render('ew', ['errors' => [], 'article' => $newArticle]);
 });
 
 $app->post('/new', function ($params, $arguments) use ($repositoryArticles) {
@@ -102,7 +102,7 @@ $app->post('/new', function ($params, $arguments) use ($repositoryArticles) {
         $uploaddir = 'resources/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         $repositoryArticles->
-        addArticle($params['title'], $params['content'], $_SESSION['user']['id'], $_FILES['image']['name']);
+        addArticle(strip_tags($params['title']), strip_tags($params['content']), $_SESSION['user']['id'], $_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
         return header('Location: /');
     } else {

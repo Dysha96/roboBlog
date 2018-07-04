@@ -86,7 +86,7 @@ $app->get('/new', function ($params, $arguments) use ($newArticle) {
     if (empty($_SESSION['user'])) {
         return header('Location: /');
     }
-    return render('ew', ['errors' => [], 'article' => $newArticle]);
+    return render('new', ['errors' => [], 'article' => $newArticle]);
 });
 
 $app->post('/new', function ($params, $arguments) use ($repositoryArticles) {

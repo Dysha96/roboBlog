@@ -73,7 +73,7 @@ $app->post('/articles/edit/:id', function ($params, $arguments) use ($repository
         $uploaddir = 'resources/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         $repositoryArticles->
-        updateArticle($_SESSION['user']['id'], $params['title'], strip_tags($params['content']), $_FILES['image']['name']);
+        updateArticle($arguments['id'], strip_tags($params['title']), $params['content'], $_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
         return header('Location: /');
     } else {
@@ -102,7 +102,7 @@ $app->post('/new', function ($params, $arguments) use ($repositoryArticles) {
         $uploaddir = 'resources/';
         $uploadfile = $uploaddir . basename($_FILES['image']['name']);
         $repositoryArticles->
-        addArticle(strip_tags($params['title']), strip_tags($params['content']), $_SESSION['user']['id'], $_FILES['image']['name']);
+        addArticle(strip_tags($params['title']), $params['content'], $_SESSION['user']['id'], $_FILES['image']['name']);
         move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile);
         return header('Location: /');
     } else {

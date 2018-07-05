@@ -52,8 +52,8 @@
             <div>
                 <?= strlen(strip_tags($article['content'])) >
                 strlen(mb_substr(strip_tags($article['content']), 0, 300)) ?
-                    mb_substr(strip_tags($article['content']), 0, 300) . '...' :
-                    mb_substr(strip_tags($article['content']), 0, 300) ?>
+                    mb_substr(strip_tags(htmlspecialchars_decode($article['content'])), 0, 300) . '...' :
+                    mb_substr(strip_tags(htmlspecialchars_decode($article['content'])), 0, 300) ?>
             </div>
 
         </div>

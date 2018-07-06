@@ -14,7 +14,7 @@ class UserRepository
     public function deleteById($id)
     {
         $stmt = $this->pdo->prepare('
-            delete from Users 
+            delete from users 
             where `id` = :id
             ');
         $stmt->execute([$id]);
@@ -24,14 +24,14 @@ class UserRepository
     {
         return $this->pdo->query('
             SELECT * 
-            FROM Users')->fetchAll();
+            FROM users')->fetchAll();
     }
 
     public function userByLogin($login)
     {
         $stmt = $this->pdo->prepare("
             SELECT * 
-            FROM Users 
+            FROM users 
             WHERE `name` = :login
         ");
         $stmt->execute(['login'=>$login]);
@@ -42,14 +42,14 @@ class UserRepository
     {
         return $this->pdo->query("
             SELECT role 
-            FROM Users 
+            FROM users 
             WHERE `name` = $login")->fetch();
     }
 
     public function addUser($name, $password, $role = null)
     {
         $insert = $this->pdo->prepare("
-            INSERT INTO `Users` 
+            INSERT INTO `users` 
             SET `name` = :name, `password` = :password, `role` = :role
          ");
 

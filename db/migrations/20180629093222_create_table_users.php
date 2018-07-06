@@ -32,7 +32,7 @@ class CreateTableUsers extends AbstractMigration
      */
     public function change()
     {
-        $articles = $this->table('Users');
+        $articles = $this->table('users');
 
         $articles->addColumn('name', 'string', array('limit' => 150))
             ->addColumn('password', 'text')

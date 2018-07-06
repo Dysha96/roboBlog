@@ -33,7 +33,7 @@ class CreateTableArticles extends AbstractMigration
     public function change()
     {
         {
-            $articles = $this->table('Articles');
+            $articles = $this->table('articles');
 
             $articles->addColumn('user_id', 'integer')
                 ->addForeignKey('user_id', 'Users', 'id')

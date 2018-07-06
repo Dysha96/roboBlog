@@ -30,7 +30,7 @@ class UsersSeeder extends AbstractSeed
             )
         );
 
-        $table = $this->table('Users');
+        $table = $this->table('users');
         $table->insert($data)->save();
     }
 }

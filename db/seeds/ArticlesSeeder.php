@@ -109,7 +109,7 @@ class ArticlesSeeder extends AbstractSeed
             ),
         );
 
-        $table = $this->table('Articles');
+        $table = $this->table('articles');
         $table->insert($data)->save();
     }
 }

@@ -16,7 +16,7 @@ class UserRepository
         $stmt = $this->pdo->prepare('
             delete from users 
             where `id` = :id
-            ');
+        ');
         $stmt->execute([$id]);
     }
 
@@ -51,7 +51,7 @@ class UserRepository
         $insert = $this->pdo->prepare("
             INSERT INTO `users` 
             SET `name` = :name, `password` = :password, `role` = :role
-         ");
+        ");
 
         $result = $insert->execute(['name' => $name, 'password' => sha1($password), 'role' => $role]);
 

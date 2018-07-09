@@ -40,7 +40,7 @@ class Application
                 $arguments = array_filter($matches, function ($key) {
                     return !is_numeric($key);
                 }, ARRAY_FILTER_USE_KEY);
-                echo( $handler(array_merge($_GET, $_POST), $arguments));
+                echo($handler(array_merge($_GET, $_POST), $arguments));
             }
         }
     }

@@ -49,7 +49,8 @@ class ArticlesRepository
     {
         $insert = $this->pdo->prepare("
             INSERT INTO `articles` 
-            SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content");
+            SET `image` = :image, `user_id` = :userId, `title` = :title,`content` = :content
+            ");
         $result = $insert->execute(['image' => $image, 'userId' => $userId, 'title' => $title, 'content' => $content]);
         return $result;
     }

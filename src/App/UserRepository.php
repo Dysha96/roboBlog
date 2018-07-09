@@ -34,7 +34,7 @@ class UserRepository
             FROM users 
             WHERE `name` = :login
         ");
-        $stmt->execute(['login'=>$login]);
+        $stmt->execute(['login' => $login]);
         return $stmt->fetch();
     }
 

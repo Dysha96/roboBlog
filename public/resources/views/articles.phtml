@@ -48,7 +48,7 @@
         </div>
         <br>
         <textarea required name="content" style="width: 100%; ">
-    <?= htmlspecialchars_decode($article['content']) ?>
+    <?php htmlspecialchars_decode($article['content']) ?>
     </textarea>
         <br/>
         <div>
@@ -80,7 +80,7 @@
             <?php endif ?>
 
             <div>
-                <p><?= htmlspecialchars_decode($article['content']) ?></p>
+                <p><?php htmlspecialchars_decode($article['content']) ?></p>
             </div>
 
 
